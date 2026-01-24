@@ -2,23 +2,7 @@
 # define UNIQUEPTR_HPP
 
 #include <cstddef>
-
-template<typename T>
-class DefaultDeleter {
-public:
-	void operator()(T* ptr) const {
-		delete ptr;
-	}
-};
-
-template<typename T>
-class DefaultDeleter<T[]> {
-public:
-	void operator()(T* ptr) const {
-		delete[] ptr;
-	}
-};
-
+#include "Deleter.hpp"
 
 template <typename T, typename D = DefaultDeleter<T>>
 class UniquePtr {
