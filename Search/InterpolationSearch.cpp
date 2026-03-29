@@ -9,8 +9,10 @@ int interpolation_search(const std::vector<int>& vec, int key) {
 
 	while (low <= high && key >= vec[low] && key <= vec[high]) {
 		if (vec[low] == vec[high]) {
-			if (vec[low] == key) return low;
-			else break;
+			if (vec[low] == key)
+				return low;
+			else
+				break;
 		}
 		int pos = low + (double)(key - vec[low]) * (high - low) / (vec[high] - vec[low]);
 		if (pos < low || pos > high)
