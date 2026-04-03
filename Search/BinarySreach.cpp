@@ -3,21 +3,19 @@
 #include <algorithm>
 #include <chrono>
 
-std::vector<int>::const_iterator binary_search_iter(const std::vector<int>& arr, int key) {
-	auto l = arr.begin();
-	auto h = arr.end();
-	std::vector<int>::const_iterator mid;
+size_t binary_search_iter(const std::vector<int>& arr, int key) {
+	size_t l = 0, h = arr.size() - 1;
 
 	while (l < h) {
-		mid = l + (h - l) / 2;
-		if (*mid == key)
+		auto mid = l + (h - l) / 2;
+		if (arr[mid] == key)
 			return mid;
-		if (*mid > key)
+		if (arr[mid] > key)
 			h = mid;
 		else
 			l = mid + 1;
 	}
-	return arr.end();
+	return arr.size();
 }
 
 size_t binary_search_rec(const std::vector<int>& arr, int key, int l, int h) {
